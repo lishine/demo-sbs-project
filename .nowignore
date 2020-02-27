@@ -1,0 +1,8 @@
+**/node_modules
+**/not_used
+**/src
+**/scripts
+external
+db
+www/server.js
+www/.next

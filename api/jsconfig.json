@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "target": "ES6",
+        "moduleResolution": "node",
+    },
+    "exclude": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/db/**",
+        "**/.history/**",
+        "**/.git/**",
+        "**/not_used/**",
+    ]
+}

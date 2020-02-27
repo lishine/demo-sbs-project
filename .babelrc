@@ -1,0 +1,24 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		],
+	],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": [
+					"./www/src",
+					"./api/src"
+				]
+			}
+		],
+		"@babel/plugin-proposal-export-default-from"
+	]
+}

@@ -1,0 +1,2 @@
+export const PING_PONG_INTERVAL = 25000
+export const AUTH_TIMESTAMP_LAG = 60000

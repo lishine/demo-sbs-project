@@ -1,0 +1,43 @@
+{
+    "name": "demo2-api",
+    "version": "1.0.0",
+    "main": "sec/index.js",
+    "scripts": {
+        "dev": "NODE_ENV=development nodemon --watch src --exec babel-node src/index.js",
+        "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist",
+        "start": "pm2 start ./dist/index.js",
+        "eslint": "eslint"
+    },
+    "author": "Pavel Ravits",
+    "license": "ISC",
+    "dependencies": {
+        "aws-sdk": "^2.465.0",
+        "camelize": "^1.0.0",
+        "form-data": "^2.3.3",
+        "isomorphic-unfetch": "^3.0.0",
+        "jwt-simple": "^0.5.6",
+        "libsodium-wrappers": "^0.7.4",
+        "lodash": "^4.17.11",
+        "micro": "^9.3.4",
+        "micro-cors": "^0.1.1",
+        "micro-fork": "^2.0.0",
+        "nexmo": "^2.4.1",
+        "nookies": "^2.0.6",
+        "path": "^0.12.7",
+        "pwd": "^1.1.0",
+        "ws": "^7.1.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.4.4",
+        "@babel/core": "^7.4.4",
+        "@babel/node": "^7.2.2",
+        "@babel/plugin-proposal-export-default-from": "^7.2.0",
+        "@babel/preset-env": "^7.4.4",
+        "babel-plugin-module-resolver": "^3.2.0",
+        "babel-plugin-transform-define": "^1.3.1",
+        "dotenv": "^8.0.0",
+        "fs-extra": "^7.0.1",
+        "nodemon": "^1.19.0",
+        "opn": "^6.0.0"
+    }
+}

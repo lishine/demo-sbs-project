@@ -1,0 +1,75 @@
+debug = true
+
+logLevel = "INFO"
+
+[accessLog]
+
+defaultEntryPoints = ["http", "https", "ws", "wss"]
+
+[api]
+  entryPoint = "traefik"
+  dashboard = true
+  debug = true
+
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+	minVersion = "VersionTLS12"
+#   [entryPoints.wss]
+#   address = ":443"
+#     [entryPoints.wss.tls]
+  
+# [entryPoints]
+#   [entryPoints.http]
+#   address = ":80"
+#     [entryPoints.http.redirect]
+#     entryPoint = "https"
+#   [entryPoints.ws]
+#   address = ":80"
+#     [entryPoints.ws.redirect]
+#     entryPoint = "wss"
+#   [entryPoints.wss]
+#   address = ":443"
+#   [entryPoints.wss.tls]
+#   [entryPoints.https]
+#   address = ":443"
+#   [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+# domain = "demo2.domain.com"
+watch = true
+exposedByDefault = false
+
+# [acme]
+# email = "vim55k@gmail.com"
+# storage = "/etc/traefik/acme.json"
+# # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+# caServer = "https://acme-v02.api.letsencrypt.org/directory"
+# entryPoint = "https"
+# onDemand = false
+# acmelogging = true
+#   [acme.dnsChallenge]
+#   provider = "cloudflare"
+#   delayBeforeCheck = 0
+#   [[acme.domains]]
+#   main = "demo2.domain.com"
+#   sans = ["api-demo2.domain.com", "ws-demo2.domain.com", "db-demo2.domain.com"]
+
+[acme]
+email = "vim55k@gmail.com"
+storage = "/etc/traefik/acme.json"
+entryPoint = "https"
+onHostRule = true
+onDemand = false
+acmelogging = true
+  [acme.httpChallenge]
+  entryPoint = "http"

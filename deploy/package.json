@@ -1,0 +1,24 @@
+{
+    "name": "demo2",
+    "author": "Pavel Ravits",
+    "license": "ISC",
+    "scripts": {
+        "run-docker-a-new": "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker-compose up --remove-orphans",
+        "deploy": "cd ../api && npm i && cd - && docker-compose build && docker-compose up --remove-orphans",
+        "___deploy-fast": "docker-compose build && docker-compose up --remove-orphans",
+        "___deploy": "cd ../api && npm i && cd - && docker-compose rm -f && docker-compose build --pull --force-rm --no-cache && docker-compose --log-level DEBUG up --remove-orphans --force-recreate",
+        "deploy-migrations": "node scripts/apply-deploy-migrations.js",
+        "fill-db-local": "babel-node scripts/fill-db.js local",
+        "fill-db-remote": "babel-node scripts/fill-db.js remote",
+        "dm-do-create": "docker-machine create --driver=digitalocean --digitalocean-access-token=$DO_TOKEN --digitalocean-size=s-1vcpu-1gb --digitalocean-region=fra1 pvrv",
+        "dm-connect": "eval $(docker-machine env do)",
+        "dm-disconnect": "eval $(docker-machine env -u) && export DOCKER_HOST=tcp://localhost:2375",
+        "dm-ls": "docker-machine ls",
+        "dm-rm": "docker-machine rm do",
+        "do-ssh": "ssh root@46.101.22.51",
+        "dm-create": "docker-machine create --driver generic --generic-ip-address=46.101.22.51 --generic-ssh-user root --generic-ssh-key ~/.ssh/id_rsa do",
+        "dm-ssh": "docker-machine ssh pvrv"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

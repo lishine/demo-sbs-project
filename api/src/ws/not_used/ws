@@ -1,0 +1,27 @@
+    let { publicKey, privateKey } = sodium.crypto_device_keypair()
+    publicKey = sodium.to_base64(publicKey)
+    privateKey = sodium.to_base64(privateKey)
+    console.log('publicKey', publicKey)
+    console.log('privateKey', privateKey)
+    const signed = sodium.to_base64(
+        sodium.crypto_sign('I am a message', sodium.from_base64(privateKey))
+    )
+    console.log('signed', signed)
+    console.log(
+        'unsigned',
+        sodium.to_string(
+            sodium.crypto_device_open(
+                sodium.from_base64(signed),
+                sodium.from_base64(publicKey)
+            )
+        )
+    )
+
+    let unsignedMessage = new TextDecoder('utf-8').decode(unsingnedUint8Array)
+    console.log('unsignedMessage', unsignedMessage)
+    return unsignedMessage
+
+        if (ws.isAlive === false) {
+        console.log('server terminating')
+        return ws.terminate()
+        }

@@ -1,0 +1,87 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "allowImportExportEverywhere": true
+    },
+    "env": {
+        "node": true,
+        "browser": true,
+        "cypress/globals": true
+    },
+    "extends": [
+        "standard",
+        "standard-react",
+        "prettier",
+        "plugin:import/warnings",
+        "plugin:cypress/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "standard",
+        "import",
+        "react",
+        "cypress"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "./www",
+                    "./api/src"
+                ]
+            },
+            "babel-module": {
+                "root": [
+                    "./www",
+                    "./api/src"
+                ]
+            }
+        }
+    },
+    "rules": {
+        "eqeqeq": 0,
+        "handle-callback-err": 0,
+        "no-undef": 2,
+        "no-unsafe-finally": 0,
+        "no-use-before-define": 0,
+        "import/no-unresolved": 2,
+        "import/namespace": [
+            1,
+            {
+                "allowComputed": true
+            }
+        ],
+        "import/named": 1,
+        "import/no-named-default": 0,
+        "import/default": 1,
+        "import/export": 1,
+        "import/exports-last": 0,
+        "import/order": 0,
+        "import/newline-after-import": 0,
+        "no-useless-escape": 0,
+        "react/jsx-indent": 0,
+        "react/prop-types": 0,
+        "react/jsx-indent-props": 0,
+        "camelcase": 0,
+        "no-return-await": 0,
+        "no-constant-condition": 0,
+        "no-unused-vars": 0,
+        "curly": [
+            "error",
+            "all"
+        ],
+        "prettier/prettier": [
+            "warn",
+            {
+                "parser": "babylon",
+                "singleQuote": true,
+                "semi": false,
+                "tabWidth": 4,
+                "printWidth": 90,
+                "useTabs": false,
+                "trailingComma": "es5",
+                "jsxBracketSameLine": false
+            }
+        ]
+    }
+}

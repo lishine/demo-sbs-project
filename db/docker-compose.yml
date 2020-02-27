@@ -1,0 +1,50 @@
+# psql -h localhost -U a -d a
+# adminer: http://localhost:8080
+# docker container ls -q
+
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      # - ./initdb:/docker-entrypoint-initdb.d/
+      - db_data_demo2:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    container_name: db
+
+  hasura:
+    image: hasura/graphql-engine:v1.0.0-beta.4.cli-migrations
+    volumes:
+      - ./migrations:/hasura-migrations
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    restart: always
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
+      HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      # HASURA_GRAPHQL_DATABASE_URL: postgres://a:a@postgres:5432/a
+      # HASURA_GRAPHQL_ADMIN_SECRET: "myadminsecretkey"
+      # HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256","key": "3EK6FD+o0c7tzBNVfjpMkNDi2yARAAKzQlk8O2IKoxQu4nF7EdAh8s3TwpHwrdWT6R", "claims_format": "stringified_json"}'
+      # HASURA_GRAPHQL_DATABASE_URL: postgres://bruusebevqdzof:77cc1cb23c92c4496a0d53164cff0b257235d4fb248cb03f1948a677090044bb@ec2-54-83-27-165.compute-1.amazonaws.com:5432/d8pqpn3bhtdk4h?sslmode=require
+      ## uncomment next line to set an access key
+      # HASURA_GRAPHQL_ACCESS_KEY: mysecretaccesskey
+    container_name: hasura
+
+volumes:
+  db_data_demo2:
+  # migrations:
+  # driver: local
+  # driver_opts:
+  # type: none
+  # o: bind
+  # device: "/c/Users/pv/dev/demo2/db/migrations"

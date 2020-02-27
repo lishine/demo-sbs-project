@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ES6",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "skipLibCheck": true,
+        "allowUnusedLabels": true,
+    },
+}

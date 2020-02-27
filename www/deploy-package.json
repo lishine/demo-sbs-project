@@ -1,0 +1,16 @@
+{
+    "name": "demo2-www",
+    "author": "Pavel Ravits",
+    "license": "ISC",
+    "scripts": {
+        "dev": "nodemon --watch ./server.js --watch ./src/routes.js -r ./server.js",
+        "build": "next build src"
+    },
+    "dependencies": {
+        "express": "^4.16.4",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "nextjs-dynamic-routes": "^2.5.1",
+        "next": "^8.1.0"
+    }
+}
